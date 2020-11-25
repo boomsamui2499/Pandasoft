@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2020 at 04:54 PM
+-- Generation Time: Nov 25, 2020 at 03:40 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- PHP Version: 7.4.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,16 +18,28 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `testnodejs`
+-- Database: `pandasoft`
 --
 
-DELIMITER $$
---
--- Procedures
---
-CREATE DEFINER=`root`@`localhost` PROCEDURE `GET_INFO` (IN `id` INT(4))  SELECT fname,lname,username,status FROM user where no = id$$
+-- --------------------------------------------------------
 
-DELIMITER ;
+--
+-- Table structure for table `product`
+--
+
+CREATE TABLE `product` (
+  `product_id` int(11) NOT NULL,
+  `product_name` varchar(100) DEFAULT NULL,
+  `price` int(11) DEFAULT NULL,
+  `discription` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `product`
+--
+
+INSERT INTO `product` (`product_id`, `product_name`, `price`, `discription`) VALUES
+(1, 'เสื้อลูฟี่', 790, 'รุ่น limited');
 
 -- --------------------------------------------------------
 
@@ -41,24 +53,25 @@ CREATE TABLE `user` (
   `lname` varchar(50) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(200) NOT NULL,
-  `status` int(1) NOT NULL
+  `token` varchar(250) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`no`, `fname`, `lname`, `username`, `password`, `status`) VALUES
-(1, 'กุ๊กไก่', 'นะจ๊ะ', '123', '$2b$10$pTevmd6sqt8Kt9bqdV2Eg.o.YtvT1VObPTJrfU2HlLfpqRLCMSjPq', 1),
-(2, 'อุอิ', 'อุอิ', '789', '$2b$10$pTevmd6sqt8Kt9bqdV2Eg.o.YtvT1VObPTJrfU2HlLfpqRLCMSjPq', 1),
-(3, 'คิคิ', 'คุคุ', '111', '$2b$10$pTevmd6sqt8Kt9bqdV2Eg.o.YtvT1VObPTJrfU2HlLfpqRLCMSjPq', 1),
-(5, 'ftest1', 'ltest1', '987', '$2b$10$pTevmd6sqt8Kt9bqdV2Eg.o.YtvT1VObPTJrfU2HlLfpqRLCMSjPq', 1),
-(7, 'testaaa', 'testbbb', '666', '$2b$10$pTevmd6sqt8Kt9bqdV2Eg.o.YtvT1VObPTJrfU2HlLfpqRLCMSjPq', 1),
-(8, 'testaaa', 'testbbb', '555', '$2b$10$pTevmd6sqt8Kt9bqdV2Eg.o.YtvT1VObPTJrfU2HlLfpqRLCMSjPq', 0);
+INSERT INTO `user` (`no`, `fname`, `lname`, `username`, `password`, `token`) VALUES
+(1, 'ทศวรรษ', 'มานะเวทย์', '123', '$2b$10$pTevmd6sqt8Kt9bqdV2Eg.o.YtvT1VObPTJrfU2HlLfpqRLCMSjPq', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `product`
+--
+ALTER TABLE `product`
+  ADD PRIMARY KEY (`product_id`);
 
 --
 -- Indexes for table `user`
@@ -69,6 +82,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `product`
+--
+ALTER TABLE `product`
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`

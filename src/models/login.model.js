@@ -15,7 +15,7 @@ Login.checklogin = async (data, result) => {
         return;
     } else {
         if (res[0].token) {
-            result(null, { status: false, message: 'ล็อคอินซ้ำ' });
+            result(null, { status: false, message: 'There is a login' });
             return;
         }
 
